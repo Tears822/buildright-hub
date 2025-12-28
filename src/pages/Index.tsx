@@ -1,10 +1,16 @@
-import { Shield, Lock, Eye, Terminal, Users, Award, ChevronRight, Zap, Server, Code, Target, Bug, Wifi, Database, FileKey, Skull } from "lucide-react";
+import { Shield, Lock, Eye, Terminal, Users, Award, ChevronRight, Zap, Server, Code, Target, Bug, Wifi, Database, FileKey, Skull, AlertTriangle, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import heroHacker from "@/assets/hero-hacker.jpg";
 import networkSecurity from "@/assets/network-security.jpg";
 import pentestTools from "@/assets/pentest-tools.jpg";
 import cyberShield from "@/assets/cyber-shield.jpg";
+import hackerPortrait from "@/assets/hacker-portrait.jpg";
+import malwareAnalysis from "@/assets/malware-analysis.jpg";
+import cyberSkull from "@/assets/cyber-skull.jpg";
+import cloudSecurity from "@/assets/cloud-security.jpg";
+import secureCoding from "@/assets/secure-coding.jpg";
+import bugBounty from "@/assets/bug-bounty.jpg";
 
 const Index = () => {
   const services = [
@@ -27,28 +33,28 @@ const Index = () => {
       title: "Threat Intelligence",
       description: "Analyze malware behavior, track threat actors, and develop advanced threat hunting methodologies.",
       level: "Advanced",
-      image: null
+      image: malwareAnalysis
     },
     {
       icon: Code,
       title: "Secure Coding",
       description: "Write bulletproof applications. Understand OWASP Top 10, SQL injection, XSS, and secure development practices.",
       level: "Beginner",
-      image: null
+      image: secureCoding
     },
     {
       icon: Server,
       title: "Cloud Security",
       description: "Protect AWS, Azure, and GCP infrastructures. Learn IAM policies, encryption, and compliance frameworks.",
       level: "Intermediate",
-      image: null
+      image: cloudSecurity
     },
     {
       icon: Bug,
       title: "Bug Bounty Hunting",
       description: "Find vulnerabilities in real-world applications and earn rewards. Learn responsible disclosure practices.",
       level: "Advanced",
-      image: null
+      image: bugBounty
     }
   ];
 
@@ -73,6 +79,27 @@ const Index = () => {
     { name: "Penetration Tester", abbr: "OSCP", icon: Target },
     { name: "Security Analyst", abbr: "SOC", icon: Eye },
     { name: "Cloud Security", abbr: "CCSP", icon: Server },
+  ];
+
+  const testimonials = [
+    {
+      name: "Alex Chen",
+      role: "Security Analyst at TechCorp",
+      quote: "The hands-on labs are incredibly realistic. I passed my OSCP on the first try thanks to this platform.",
+      image: hackerPortrait
+    },
+    {
+      name: "Sarah Mitchell",
+      role: "Penetration Tester",
+      quote: "Best investment in my career. The instructors are actual industry professionals with real-world experience.",
+      image: null
+    },
+    {
+      name: "James Wilson",
+      role: "SOC Manager",
+      quote: "We train our entire security team here. The curriculum stays current with emerging threats.",
+      image: null
+    }
   ];
 
   return (
@@ -164,6 +191,38 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Hacker Image Banner */}
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src={hackerPortrait} 
+            alt="Anonymous hacker"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-background" />
+        </div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="max-w-xl">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Think Like a <span className="text-primary">Hacker</span>
+              </h2>
+              <p className="text-muted-foreground">
+                Understand attacker mindsets, techniques, and tools. The best defenders know how attackers think.
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-32 h-32 rounded-2xl overflow-hidden border border-primary/20">
+                <img src={cyberSkull} alt="Cyber skull" className="w-full h-full object-cover" />
+              </div>
+              <div className="w-32 h-32 rounded-2xl overflow-hidden border border-primary/20">
+                <img src={cyberShield} alt="Cyber shield" className="w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Tools Section */}
       <section id="tools" className="py-16 border-y border-primary/10 bg-card/30">
         <div className="container mx-auto px-6">
@@ -195,18 +254,17 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
               <Card key={index} className="group bg-card/50 border-primary/10 hover:border-primary/40 transition-all duration-500 overflow-hidden">
-                {service.image && (
-                  <div className="h-40 overflow-hidden">
-                    <img 
-                      src={service.image} 
-                      alt={service.title}
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
-                    />
-                  </div>
-                )}
-                <CardContent className="p-6">
+                <div className="h-48 overflow-hidden relative">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                </div>
+                <CardContent className="p-6 -mt-8 relative">
                   <div className="flex items-start justify-between mb-4">
-                    <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                    <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 border border-primary/20">
                       <service.icon className="h-6 w-6" />
                     </div>
                     <span className={`text-xs px-3 py-1 rounded-full font-mono ${
@@ -302,8 +360,62 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Threat Section with Images */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="text-primary font-mono text-sm mb-2">// THREAT_LANDSCAPE</div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Understand the Threats</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Learn to identify, analyze, and defend against modern cyber threats.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="relative group rounded-2xl overflow-hidden border border-primary/10 hover:border-primary/30 transition-all">
+              <img src={malwareAnalysis} alt="Malware Analysis" className="w-full h-64 object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <AlertTriangle className="h-5 w-5 text-red-400" />
+                  <span className="text-red-400 font-mono text-sm">HIGH RISK</span>
+                </div>
+                <h3 className="text-xl font-bold mb-2">Malware Analysis</h3>
+                <p className="text-sm text-muted-foreground">Reverse engineer malicious software and understand attack patterns.</p>
+              </div>
+            </div>
+
+            <div className="relative group rounded-2xl overflow-hidden border border-primary/10 hover:border-primary/30 transition-all">
+              <img src={cyberSkull} alt="Advanced Threats" className="w-full h-64 object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <Skull className="h-5 w-5 text-primary" />
+                  <span className="text-primary font-mono text-sm">APT TACTICS</span>
+                </div>
+                <h3 className="text-xl font-bold mb-2">Advanced Persistent Threats</h3>
+                <p className="text-sm text-muted-foreground">Study nation-state attack techniques and defense strategies.</p>
+              </div>
+            </div>
+
+            <div className="relative group rounded-2xl overflow-hidden border border-primary/10 hover:border-primary/30 transition-all">
+              <img src={cloudSecurity} alt="Cloud Threats" className="w-full h-64 object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <Globe className="h-5 w-5 text-cyan-400" />
+                  <span className="text-cyan-400 font-mono text-sm">CLOUD SECURITY</span>
+                </div>
+                <h3 className="text-xl font-bold mb-2">Cloud Infrastructure</h3>
+                <p className="text-sm text-muted-foreground">Secure modern cloud environments and prevent misconfigurations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Certifications Section */}
-      <section id="certifications" className="py-24">
+      <section id="certifications" className="py-24 bg-muted/20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <div className="text-primary font-mono text-sm mb-2">// CERTIFICATIONS</div>
@@ -321,6 +433,40 @@ const Index = () => {
                 </div>
                 <div className="text-3xl font-bold text-primary mb-2 font-mono">{cert.abbr}</div>
                 <div className="text-muted-foreground text-sm">{cert.name}</div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="text-primary font-mono text-sm mb-2">// SUCCESS_STORIES</div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">From Our Graduates</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="bg-card/50 border-primary/10 overflow-hidden">
+                {testimonial.image && (
+                  <div className="h-48 overflow-hidden">
+                    <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover opacity-60" />
+                  </div>
+                )}
+                <CardContent className="p-6">
+                  <p className="text-muted-foreground italic mb-4">"{testimonial.quote}"</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-semibold">
+                      {testimonial.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-sm">{testimonial.name}</div>
+                      <div className="text-xs text-muted-foreground">{testimonial.role}</div>
+                    </div>
+                  </div>
+                </CardContent>
               </Card>
             ))}
           </div>
